@@ -10,14 +10,14 @@ With nearly half of all AI-generated code containing security flaws despite look
 
 | Folder | What's inside |
 |---|---|
-| [`injection/`](./injection/) | XSS and SQLi demos — vulnerable component + fix |
-| [`hardcoded-secrets/`](./hardcoded-secrets/) | Detection scripts + real-world patterns |
-| [`broken-access-control/`](./broken-access-control/) | IDOR demos, missing RLS, client-side-only auth |
-| [`package-hallucination/`](./package-hallucination/) | Scanner for AI-suggested packages that don't exist |
-| [`prompt-injection/`](./prompt-injection/) | Tested payloads + outcomes across AI coding tools |
-| [`mcp-attack-surface/`](./mcp-attack-surface/) | MCP CVEs, broad agent access risks |
-| [`speed-over-safety/`](./speed-over-safety/) | Before/after: what AI removed and what it cost |
-| [`tools/`](./tools/) | Runnable scripts: secret scanner, package checker |
+| [`injection/`](./injection/) | [`xss-demo/`](./injection/xss-demo/) (vulnerable UI + fix), [`sqli-demo/`](./injection/sqli-demo/) (raw vs parameterized queries) |
+| [`hardcoded-secrets/`](./hardcoded-secrets/) | [`detection/`](./hardcoded-secrets/detection/) (scan scripts), [`examples/`](./hardcoded-secrets/examples/) (sanitized patterns) |
+| [`broken-access-control/`](./broken-access-control/) | [`idor-demo/`](./broken-access-control/idor-demo/), [`missing-rls/`](./broken-access-control/missing-rls/) (Supabase/Postgres RLS gaps) |
+| [`package-hallucination/`](./package-hallucination/) | [`scanner/`](./package-hallucination/scanner/) — verify AI-suggested packages exist; typosquatting notes |
+| [`prompt-injection/`](./prompt-injection/) | [`payloads/`](./prompt-injection/payloads/) — tested strings + outcomes |
+| [`mcp-attack-surface/`](./mcp-attack-surface/) | [`cves/`](./mcp-attack-surface/cves/) — CurXecute, EscapeRoute, related notes |
+| [`speed-over-safety/`](./speed-over-safety/) | [`patterns/`](./speed-over-safety/patterns/) — before/after: what AI removed, what it cost |
+| [`tools/`](./tools/) | Repo-wide CLI: [`secret-scanner.py`](./tools/secret-scanner.py), [`package-checker.py`](./tools/package-checker.py) |
 
 ---
 
@@ -50,8 +50,8 @@ Agents optimized for acceptance remove validation checks, relax DB policies, or 
 
 Quick-start scripts in [`tools/`](./tools/):
 
-- **`secret-scanner.py`** — scans a local repo for hardcoded credentials and exposed API keys
-- **`package-checker.py`** — validates AI-suggested npm/PyPI packages exist and aren't typosquatted
+- **`secret-scanner.py`** — scans a local repo for hardcoded credentials and exposed API keys (placeholder CLI today; extend with real matchers)
+- **`package-checker.py`** — validates AI-suggested npm/PyPI packages exist and aren't typosquatted (placeholder CLI today; add registry checks next)
 
 ```bash
 # Scan a repo for secrets
@@ -63,13 +63,15 @@ python tools/package-checker.py --file packages.txt
 
 ---
 
-## 📋 Each Folder Follows This Pattern
+## 📋 How each topic is organized
 
-```
+Every top-level topic has a **README.md** (what you are testing, how to reproduce, what to look for, fixes). Under that, **named subfolders** hold demos, payloads, or scripts — for example `*-demo/`, `detection/`, `payloads/`, `cves/`, or `patterns/`. Names differ by topic; open each topic’s README for pointers.
+
+```text
 topic/
-├── README.md        # what it is · how to reproduce · what to look for · fix
-├── vulnerable/      # intentionally broken example
-└── fixed/           # patched version with explanation
+├── README.md
+├── some-demo/       # or detection/, payloads/, cves/, patterns/, scanner/, …
+└── …
 ```
 
 ---
