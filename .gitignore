@@ -1,0 +1,49 @@
+# Secrets & env files (never commit these)
+.env
+.env.*
+!.env.example
+
+# Scanner / tool reports (narrow patterns—do not use *.txt or sample package lists get ignored)
+report*.txt
+*-report.txt
+report-*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+.eggs/
+*.egg-info/
+.Python
+
+# Node (if any JS demos)
+node_modules/
+.next/
+out/
+
+# Build / packaging artifacts
+dist/
+build/
+
+# Testing & type-check caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
