@@ -2,7 +2,7 @@
 
 Security research focused on vulnerabilities introduced by AI-assisted and vibe-coded development.
 
-With nearly half of all AI-generated code containing security flaws despite looking production-ready, this repo documents attack vectors, proof-of-concept demos, and test patterns — from the perspective of a QA engineer who ships security-critical software.
+With nearly half of all AI-generated code containing security flaws despite looking production-ready, this repo documents attack vectors, proof-of-concept demos, and test patterns - from the perspective of a QA engineer who ships security-critical software.
 
 ---
 
